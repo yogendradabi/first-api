@@ -4,12 +4,12 @@ var express = require('express'),
   mongoose = require('mongoose'),
   Task = require('./api/models/ModelA'), //created model loading here
   bodyParser = require('body-parser');
-
+var cors = require('cors');
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://127.0.0.1:27017/ToDoDb", { useNewUrlParser: true });
 
-
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 

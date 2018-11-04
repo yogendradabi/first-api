@@ -16,6 +16,11 @@ exports.list_all_tasks = function(req, res) {
 
 
 exports.create_a_task = function(req, res) {
+  // CORS headers
+res.header("Access-Control-Allow-Origin", "*"); // restrict it to the required domain
+res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+// Set custom headers for CORS
+res.header('Access-Control-Allow-Headers', 'Content-type,Accept,X-Access-Token,X-Key');
   var new_task = new Task(req.body);
   new_task.save(function(err, task) {
     if (err)
